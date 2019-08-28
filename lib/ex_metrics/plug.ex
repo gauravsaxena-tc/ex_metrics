@@ -13,6 +13,7 @@ defmodule ExMetrics.Plug do
     metric_name = get_metric_name(conn)
 
     start_time = :erlang.now()
+    ExMetrics.increment("web.request.count")
 
     register_before_send(conn, fn conn ->
       end_time = :erlang.now()
